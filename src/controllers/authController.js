@@ -22,11 +22,12 @@ export const signup = async (req, res) => {
 
     res.status(201).json({ token, user: { id: user._id, username, email } });
   } catch (error) {
-    res.status(500).json({ message: "Signup failed", error: error.message });
+    console.error(error); 
+  res.status(500).json({ message: "Signup failed", error: error.message });
   }
 };
 
-export const login = async (res, req) => {
+export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -49,6 +50,7 @@ export const login = async (res, req) => {
         user: { id: user._id, username: user.username, email: user.email },
       });
   } catch (error) {
-    res.status(500).json({ message: "Login failed", error: error.message });
+    console.error(error); // This will print the real error in your terminal
+  res.status(500).json({ message: "Login failed", error: error.message });
   }
 };
