@@ -63,3 +63,14 @@ export const deleteNote = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+export const getPublicNotes = async (req, res) => {
+    try {
+        const publicNotes = await Note.find({ isPublic: true })
+            .populate('user', 'username')
+            .sort({ updatedAt: -1 });
+        res.status(200).json(publicNotes);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
