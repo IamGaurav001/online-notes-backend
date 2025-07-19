@@ -30,11 +30,11 @@ export const getNote = async (req, res) => {
 export const updateNote = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, content } = req.body;
+        const { title, content, isPublic } = req.body; 
 
         const updatedNote = await Note.findByIdAndUpdate(
             id,
-            { title, content },
+            { title, content, isPublic }, 
             { new: true }
         );
 
