@@ -6,8 +6,9 @@ import dotenv from "dotenv";
 import cors from 'cors';
 const app = express();
 
+
 app.use(cors({
-  origin: 'https://online-notes-frontend-gm6a.vercel.app/',
+  origin: 'https://online-notes-frontend-gm6a.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
